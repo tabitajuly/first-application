@@ -4,7 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tabita July - Desenvolvedora</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --bg: #0f1216;
+            --bg-soft: #151a20;
+            --surface: rgba(255, 255, 255, 0.08);
+            --surface-strong: rgba(255, 255, 255, 0.14);
+            --text: #f6f4f1;
+            --text-muted: #b7bcc4;
+            --accent: #ffb938;
+            --accent-2: #22d3ee;
+            --accent-3: #ff5f7a;
+            --border: rgba(255, 255, 255, 0.12);
+            --shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -12,28 +29,33 @@
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: "Space Grotesk", "Segoe UI", sans-serif;
             line-height: 1.6;
-            color: #333;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: var(--text);
+            background:
+                radial-gradient(circle at 10% 10%, rgba(255, 185, 56, 0.18), transparent 40%),
+                radial-gradient(circle at 90% 20%, rgba(34, 211, 238, 0.18), transparent 45%),
+                radial-gradient(circle at 50% 90%, rgba(255, 95, 122, 0.12), transparent 45%),
+                linear-gradient(160deg, #0b0d10 0%, #121722 60%, #0c1118 100%);
             min-height: 100vh;
         }
 
         .container {
-            max-width: 1000px;
+            max-width: 1080px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 28px 20px 60px;
         }
 
-        /* Header/Navegação */
         header {
-            background: rgba(255, 255, 255, 0.95);
-            padding: 1.5rem 0;
-            border-radius: 10px;
-            margin-bottom: 2rem;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            background: rgba(10, 12, 16, 0.6);
+            backdrop-filter: blur(12px);
+            padding: 1rem 0;
+            border-radius: 16px;
+            margin-bottom: 2.5rem;
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow);
             position: sticky;
-            top: 20px;
+            top: 16px;
             z-index: 100;
         }
 
@@ -45,79 +67,177 @@
         }
 
         .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: #667eea;
+            font-family: "Fraunces", serif;
+            font-size: 1.6rem;
+            font-weight: 700;
+            letter-spacing: 0.4px;
+            color: var(--text);
         }
 
         nav ul {
             display: flex;
             list-style: none;
-            gap: 2rem;
+            gap: 1.5rem;
         }
 
         nav a {
             text-decoration: none;
-            color: #333;
+            color: var(--text-muted);
             transition: color 0.3s;
             font-weight: 500;
+            font-size: 0.98rem;
         }
 
         nav a:hover {
-            color: #667eea;
+            color: var(--text);
         }
 
-        /* Hero Section */
         .hero {
-            background: white;
-            border-radius: 10px;
-            padding: 4rem 2rem;
-            text-align: center;
-            margin-bottom: 2rem;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 2.5rem;
+            align-items: center;
+            background: var(--surface);
+            border-radius: 20px;
+            padding: 3.5rem 3rem;
+            margin-bottom: 2.5rem;
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(120deg, rgba(255, 185, 56, 0.08), transparent 45%, rgba(34, 211, 238, 0.08));
+            pointer-events: none;
+        }
+
+        .hero-text {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid var(--border);
+            border-radius: 999px;
+            padding: 0.4rem 0.9rem;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 1.2rem;
         }
 
         .hero h1 {
-            font-size: 2.5rem;
-            color: #667eea;
+            font-family: "Fraunces", serif;
+            font-size: clamp(2.2rem, 4vw, 3.4rem);
+            line-height: 1.1;
             margin-bottom: 1rem;
+            color: var(--text);
         }
 
         .hero p {
-            font-size: 1.1rem;
-            color: #666;
+            font-size: 1.05rem;
+            color: var(--text-muted);
             margin-bottom: 2rem;
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            align-items: center;
         }
 
         .btn {
             display: inline-block;
-            padding: 0.8rem 2rem;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
+            padding: 0.85rem 2rem;
+            background: linear-gradient(130deg, var(--accent) 0%, #ffd780 100%);
+            color: #1a1a1a;
             text-decoration: none;
-            border-radius: 5px;
-            transition: transform 0.3s, box-shadow 0.3s;
+            border-radius: 999px;
+            transition: transform 0.3s, box-shadow 0.3s, filter 0.3s;
             border: none;
             cursor: pointer;
             font-size: 1rem;
+            font-weight: 600;
+            letter-spacing: 0.2px;
         }
 
         .btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 6px 12px rgba(102, 126, 234, 0.4);
+            box-shadow: 0 10px 25px rgba(255, 185, 56, 0.35);
         }
 
-        /* Seção de Projetos */
-        .projects {
-            background: white;
-            border-radius: 10px;
+        .btn-outline {
+            background: transparent;
+            color: var(--text);
+            border: 1px solid var(--border);
+        }
+
+        .btn-outline:hover {
+            filter: brightness(1.2);
+            box-shadow: 0 10px 25px rgba(34, 211, 238, 0.25);
+        }
+
+        .hero-card {
+            position: relative;
+            z-index: 1;
+            background: rgba(12, 15, 20, 0.7);
+            border: 1px solid var(--border);
+            border-radius: 18px;
             padding: 2rem;
-            margin-bottom: 2rem;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            display: grid;
+            gap: 1.2rem;
+        }
+
+        .hero-card h3 {
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--text-muted);
+        }
+
+        .hero-metrics {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 1rem;
+        }
+
+        .metric {
+            background: var(--surface-strong);
+            border-radius: 12px;
+            padding: 1rem;
+            border: 1px solid var(--border);
+        }
+
+        .metric strong {
+            display: block;
+            font-size: 1.6rem;
+            color: var(--accent);
+        }
+
+        .metric span {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .projects {
+            background: var(--surface);
+            border-radius: 20px;
+            padding: 2.5rem;
+            margin-bottom: 2.5rem;
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow);
         }
 
         .projects h2 {
-            color: #667eea;
+            color: var(--text);
             margin-bottom: 1.5rem;
             font-size: 2rem;
         }
@@ -129,24 +249,25 @@
         }
 
         .project-card {
-            background: #f8f9fa;
-            border-left: 4px solid #667eea;
-            padding: 1.5rem;
-            border-radius: 5px;
-            transition: transform 0.3s;
+            background: rgba(9, 11, 15, 0.7);
+            border: 1px solid var(--border);
+            padding: 1.6rem;
+            border-radius: 16px;
+            transition: transform 0.3s, border 0.3s;
         }
 
         .project-card:hover {
             transform: translateY(-5px);
+            border-color: rgba(255, 255, 255, 0.25);
         }
 
         .project-card h3 {
-            color: #667eea;
+            color: var(--text);
             margin-bottom: 0.5rem;
         }
 
         .project-card p {
-            color: #666;
+            color: var(--text-muted);
             margin-bottom: 1rem;
         }
 
@@ -157,24 +278,24 @@
         }
 
         .tech-tag {
-            background: #667eea;
-            color: white;
+            background: rgba(255, 255, 255, 0.08);
+            color: var(--text);
             padding: 0.3rem 0.8rem;
-            border-radius: 20px;
+            border-radius: 999px;
             font-size: 0.85rem;
         }
 
-        /* Seção de Skills */
         .skills {
-            background: white;
-            border-radius: 10px;
-            padding: 2rem;
-            margin-bottom: 2rem;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            background: var(--surface);
+            border-radius: 20px;
+            padding: 2.5rem;
+            margin-bottom: 2.5rem;
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow);
         }
 
         .skills h2 {
-            color: #667eea;
+            color: var(--text);
             margin-bottom: 1.5rem;
             font-size: 2rem;
         }
@@ -186,41 +307,48 @@
         }
 
         .skill-item {
-            text-align: center;
+            background: rgba(9, 11, 15, 0.7);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 1.2rem;
         }
 
         .skill-item h3 {
-            color: #333;
-            margin-bottom: 0.5rem;
+            color: var(--text);
+            margin-bottom: 0.8rem;
+            font-size: 1rem;
         }
 
         .skill-bar {
-            background: #e0e0e0;
+            background: rgba(255, 255, 255, 0.08);
             height: 8px;
             border-radius: 4px;
             overflow: hidden;
-            margin-top: 0.5rem;
         }
 
         .skill-progress {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(130deg, var(--accent-2) 0%, var(--accent) 100%);
             height: 100%;
             border-radius: 4px;
         }
 
-        /* Seção de Contato */
         .contact {
-            background: white;
-            border-radius: 10px;
-            padding: 2rem;
+            background: var(--surface);
+            border-radius: 20px;
+            padding: 2.5rem;
             text-align: center;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow);
         }
 
         .contact h2 {
-            color: #667eea;
+            color: var(--text);
             margin-bottom: 1.5rem;
             font-size: 2rem;
+        }
+
+        .contact p {
+            color: var(--text-muted);
         }
 
         .contact-links {
@@ -228,54 +356,94 @@
             justify-content: center;
             gap: 1.5rem;
             margin-top: 1.5rem;
+            flex-wrap: wrap;
         }
 
         .contact-link {
-            display: inline-block;
             width: 50px;
             height: 50px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
+            background: rgba(255, 255, 255, 0.08);
+            color: var(--text);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             text-decoration: none;
-            transition: transform 0.3s;
+            transition: transform 0.3s, background 0.3s;
             font-size: 1.5rem;
+            border: 1px solid var(--border);
         }
 
         .contact-link:hover {
             transform: scale(1.1);
+            background: rgba(255, 255, 255, 0.18);
         }
 
-        /* Footer */
         footer {
-            background: rgba(255, 255, 255, 0.95);
+            background: rgba(10, 12, 16, 0.6);
             text-align: center;
             padding: 1.5rem;
-            border-radius: 10px;
+            border-radius: 16px;
             margin-top: 2rem;
-            color: #666;
+            color: var(--text-muted);
+            border: 1px solid var(--border);
         }
 
-        /* Responsivo */
+        .section-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .section-header span {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .reveal {
+            animation: fadeUp 0.9s ease forwards;
+            opacity: 0;
+            transform: translateY(16px);
+        }
+
+        @keyframes fadeUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .reveal {
+                animation: none;
+                opacity: 1;
+                transform: none;
+            }
+        }
+
         @media (max-width: 768px) {
             nav ul {
                 flex-direction: column;
                 gap: 1rem;
             }
 
-            .hero h1 {
-                font-size: 1.8rem;
-            }
-
-            .hero p {
-                font-size: 1rem;
-            }
-
             nav {
                 flex-direction: column;
+                gap: 1rem;
+            }
+
+            .hero {
+                padding: 2.5rem 2rem;
+            }
+
+            .hero-actions {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .contact-links {
                 gap: 1rem;
             }
         }
@@ -297,19 +465,42 @@
         </header>
 
         <!-- Hero Section -->
-        <section class="hero" id="inicio">
-            <h1>Olá! 👋 Sou Tabita July</h1>
-            <p>Desenvolvedora apaixonada por criar soluções inovadoras e aplicações web modernas</p>
-            <a href="#contato" class="btn">Entre em Contato</a>
+        <section class="hero reveal" id="inicio">
+            <div class="hero-text">
+                <div class="hero-badge">Disponível para novos projetos</div>
+                <h1>Olá! Sou Tabita July, desenvolvedora de experiências digitais com foco em impacto.</h1>
+                <p>Crio interfaces modernas e aplicações web que combinam performance, estética e estratégia para marcas e produtos em crescimento.</p>
+                <div class="hero-actions">
+                    <a href="#contato" class="btn">Entre em contato</a>
+                    <a href="#projetos" class="btn btn-outline">Ver projetos</a>
+                </div>
+            </div>
+            <div class="hero-card">
+                <h3>Resumo rápido</h3>
+                <p>UX, Frontend e prototipagem rápida para entregar valor em semanas, não meses.</p>
+                <div class="hero-metrics">
+                    <div class="metric">
+                        <strong>+12</strong>
+                        <span>Projetos pessoais</span>
+                    </div>
+                    <div class="metric">
+                        <strong>3 anos</strong>
+                        <span>Construindo produtos web</span>
+                    </div>
+                </div>
+            </div>
         </section>
 
         <!-- Projetos -->
-        <section class="projects" id="projetos">
-            <h2>📱 Meus Projetos</h2>
+        <section class="projects reveal" id="projetos">
+            <div class="section-header">
+                <h2>Meus Projetos</h2>
+                <span>Seleção recente e em constante evolução</span>
+            </div>
             <div class="project-grid">
                 <div class="project-card">
                     <h3>First Application</h3>
-                    <p>Meu primeiro projeto - uma aplicação web interativa e responsiva que demonstra conceitos fundamentais de desenvolvimento.</p>
+                    <p>Aplicação interativa e responsiva que demonstra fundamentos sólidos de HTML, CSS e JavaScript.</p>
                     <div class="tech-tags">
                         <span class="tech-tag">HTML</span>
                         <span class="tech-tag">CSS</span>
@@ -317,18 +508,30 @@
                     </div>
                 </div>
                 <div class="project-card">
-                    <h3>Adicione Seus Projetos</h3>
-                    <p>Este é um espaço para adicionar mais projetos conforme você desenvolve novas aplicações e ganha experiência.</p>
+                    <h3>Portfólio em evolução</h3>
+                    <p>Novos estudos de caso e aplicações full-stack chegando nas próximas semanas.</p>
                     <div class="tech-tags">
-                        <span class="tech-tag">Em desenvolvimento</span>
+                        <span class="tech-tag">Em breve</span>
+                        <span class="tech-tag">UI/UX</span>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <h3>Landing de produto</h3>
+                    <p>Layout estratégico com foco em conversão, copy clara e performance otimizada para dispositivos móveis.</p>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Design System</span>
+                        <span class="tech-tag">Acessibilidade</span>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- Skills -->
-        <section class="skills" id="skills">
-            <h2>🚀 Minhas Skills</h2>
+        <section class="skills reveal" id="skills">
+            <div class="section-header">
+                <h2>Minhas Skills</h2>
+                <span>Especialidades que movem projetos do zero ao lançamento</span>
+            </div>
             <div class="skills-grid">
                 <div class="skill-item">
                     <h3>Frontend</h3>
@@ -358,9 +561,9 @@
         </section>
 
         <!-- Contato -->
-        <section class="contact" id="contato">
-            <h2>📧 Entre em Contato</h2>
-            <p>Quer conversar sobre projetos ou oportunidades? Me encontre nas redes sociais!</p>
+        <section class="contact reveal" id="contato">
+            <h2>Entre em Contato</h2>
+            <p>Quer conversar sobre projetos ou oportunidades? Me encontre nas redes sociais.</p>
             <div class="contact-links">
                 <a href="https://github.com/tabitajuly" class="contact-link" title="GitHub">
                     <span>🐙</span>
