@@ -28,6 +28,10 @@
             box-sizing: border-box;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             font-family: "Space Grotesk", "Segoe UI", sans-serif;
             line-height: 1.6;
@@ -38,6 +42,23 @@
                 radial-gradient(circle at 50% 90%, rgba(255, 95, 122, 0.12), transparent 45%),
                 linear-gradient(160deg, #0b0d10 0%, #121722 60%, #0c1118 100%);
             min-height: 100vh;
+        }
+
+        .skip-link {
+            position: absolute;
+            left: -999px;
+            top: 12px;
+            background: var(--accent);
+            color: #1a1a1a;
+            padding: 0.6rem 1rem;
+            border-radius: 999px;
+            font-weight: 600;
+            text-decoration: none;
+            z-index: 200;
+        }
+
+        .skip-link:focus {
+            left: 20px;
         }
 
         .container {
@@ -88,6 +109,13 @@
             font-size: 0.98rem;
         }
 
+        nav a:focus-visible,
+        .btn:focus-visible,
+        .contact-link:focus-visible {
+            outline: 2px solid var(--accent-2);
+            outline-offset: 3px;
+        }
+
         nav a:hover {
             color: var(--text);
         }
@@ -113,6 +141,19 @@
             inset: 0;
             background: linear-gradient(120deg, rgba(255, 185, 56, 0.08), transparent 45%, rgba(34, 211, 238, 0.08));
             pointer-events: none;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            width: 240px;
+            height: 240px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255, 185, 56, 0.4), transparent 70%);
+            top: -80px;
+            right: 20px;
+            opacity: 0.6;
+            filter: blur(2px);
         }
 
         .hero-text {
@@ -225,6 +266,53 @@
         .metric span {
             color: var(--text-muted);
             font-size: 0.9rem;
+        }
+
+        .features {
+            background: var(--surface);
+            border-radius: 20px;
+            padding: 2.5rem;
+            margin-bottom: 2.5rem;
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow);
+        }
+
+        .features h2 {
+            color: var(--text);
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .feature-card {
+            background: rgba(9, 11, 15, 0.7);
+            border: 1px solid var(--border);
+            padding: 1.4rem;
+            border-radius: 16px;
+            display: grid;
+            gap: 0.8rem;
+            transition: transform 0.3s, border 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(255, 255, 255, 0.25);
+        }
+
+        .feature-icon {
+            width: 42px;
+            height: 42px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.08);
+            font-size: 1.2rem;
         }
 
         .projects {
@@ -397,6 +485,10 @@
             flex-wrap: wrap;
         }
 
+        section[id] {
+            scroll-margin-top: 120px;
+        }
+
         .section-header span {
             color: var(--text-muted);
             font-size: 0.95rem;
@@ -450,10 +542,11 @@
     </style>
 </head>
 <body>
+    <a class="skip-link" href="#inicio">Pular para o conteúdo</a>
     <div class="container">
         <!-- Navegação -->
         <header>
-            <nav>
+            <nav aria-label="Navegação principal">
                 <div class="logo">Tabita July</div>
                 <ul>
                     <li><a href="#inicio">Início</a></li>
@@ -464,6 +557,7 @@
             </nav>
         </header>
 
+        <main>
         <!-- Hero Section -->
         <section class="hero reveal" id="inicio">
             <div class="hero-text">
@@ -487,6 +581,31 @@
                         <strong>3 anos</strong>
                         <span>Construindo produtos web</span>
                     </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Diferenciais -->
+        <section class="features reveal" id="diferenciais">
+            <div class="section-header">
+                <h2>Diferenciais</h2>
+                <span>O que sustenta entregas rápidas e consistentes</span>
+            </div>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Entrega ágil</h3>
+                    <p>Sprints curtos com validação rápida para reduzir riscos e acelerar resultados.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🧭</div>
+                    <h3>Direção estratégica</h3>
+                    <p>Pesquisa leve, priorização clara e foco em métricas que importam.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">✨</div>
+                    <h3>Experiência premium</h3>
+                    <p>Design consistente e responsivo, pensado para conversão e engajamento.</p>
                 </div>
             </div>
         </section>
@@ -581,6 +700,7 @@
         <footer>
             <p>&copy; 2026 Tabita July. Todos os direitos reservados.</p>
         </footer>
+        </main>
     </div>
 </body>
 </html>
